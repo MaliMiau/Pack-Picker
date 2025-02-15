@@ -1,19 +1,20 @@
 <script setup lang="ts">
 import ClickableItems from './ClickableItems.vue';
-const props = defineProps({
+import SubCategory from './SubCategory.vue';
+defineProps({
     Category:{
         type: Object,
         default: JSON.parse('{"name": "Category", "packs": ["Pack"]}')
     }
 })
-console.log(props.Category)
 </script>
 
 <template>
-    <div class="container">
+    <div class="category-container">
         <div class="grid">
             <ClickableItems v-for="pack in Category.packs" :key="pack" :Name="pack"/>
         </div>
+        <SubCategory v-for="subcategory in Category.subcategories" :key="subcategory.name" :SubCategory="subcategory"/>
     </div>
 </template>
 

@@ -16,7 +16,7 @@
                         "Diamond Totem",
                         "Copper Totem",
                         "Emerald Totem",
-                        "Emerald Totem"
+                        "Netherite Totem"
                     ]
                 }
             ]
@@ -27,7 +27,10 @@
                 "Strawberry Cake",
                 "Chocolate Cake",
                 "Apple Cake",
-                "Carrot Cake"
+                "Carrot Cake",
+                "Oreo Cake",
+                "Coffee Cake",
+                "Icecream Cake"
             ]
         }
     ]

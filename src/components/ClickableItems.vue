@@ -37,9 +37,10 @@ defineProps({
     }
     section {
         color: white;
-        font-family: 'Courier New', Courier, monospace;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-size: larger;
         text-align: center;
-        margin: 10px 5px
+        margin: 10px 5px;
+        font-weight: 600;
     }
 </style>
