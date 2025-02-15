@@ -5,12 +5,14 @@ import json from '../test-json/properties.json'
 
 <template>
     <div class="container">
-        <div v-for="category in json.categories" :key="category.name">
-            <MainCategory :Category="category"/>
-        </div>
+            <MainCategory v-for="category in json.categories" :key="category.name" :Category="category"/>
     </div>
 </template>
 
 <style scoped>
-
+    .container {
+        background-color: blue;
+        width: fit-content;
+        padding: 16px;
+    }
 </style>

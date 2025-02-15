@@ -15,12 +15,12 @@ defineProps({
 </template>
 
 <style scoped>
-    div{
+    div {
         background: #000000aa;
         width: 128px;
         height: 160px;
-        margin: 10px;
         border-radius: 24px;
+        margin: 16px;
         display: flex;
         flex-direction: column;
         align-items: center;
