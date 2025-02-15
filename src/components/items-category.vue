@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Clickable from './Clickable.vue';
+import clickableItem from './clickable-item.vue';
 const packs = [
     "1",
     "2",
@@ -19,7 +19,7 @@ const packs = [
 <template>
     <div class="container">
         <div class="grid">
-            <Clickable v-for="pack in packs":key="pack" :Name="pack"/>
+            <clickableItem v-for="pack in packs" :key="pack" :Name="pack"/>
         </div>
     </div>
     

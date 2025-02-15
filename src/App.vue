@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Category from './components/Category.vue';
+import ItemsCategory from './components/items-category.vue';
 </script>
 
 <template>
-<Category/>
+<ItemsCategory/>
 </template>
 
 <style>
