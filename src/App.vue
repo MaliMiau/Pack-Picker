@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import ItemsCategory from './components/items-category.vue';
+import AllCategories from './components/AllCategories.vue';
+
 </script>
 
 <template>
-<ItemsCategory/>
+<AllCategories/>
 </template>
 
-<style>
+<style scoped>
 
 </style>

@@ -17,8 +17,8 @@ defineProps({
 <style scoped>
     div{
         background: #000000aa;
-        width: 150px;
-        height: 175px;
+        width: 128px;
+        height: 160px;
         margin: 10px;
         border-radius: 24px;
         display: flex;
@@ -30,16 +30,16 @@ defineProps({
         }
     }
     img {
-        width: 80px;
-        height: 80px;
+        width: 64px;
+        height: 64px;
         background-color: black;
         margin-top: 25px;
     }
     section {
-        margin-top: 10px;
         color: white;
         font-family: 'Courier New', Courier, monospace;
         font-size: larger;
         text-align: center;
+        margin: 10px 5px
     }
 </style>

@@ -1,0 +1,34 @@
+{
+    "categories": [
+        {
+            "name": "Totems",
+            "packs": [
+                "Medkit Totem",
+                "One-Up Totem",
+                "Star Totem"
+            ],
+            "subcategories": [
+                {
+                    "name": "Material Totems",
+                    "packs": [
+                        "Iron Totem",
+                        "Redstone Totem",
+                        "Diamond Totem",
+                        "Copper Totem",
+                        "Emerald Totem",
+                        "Emerald Totem"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Cakes",
+            "packs": [
+                "Strawberry Cake",
+                "Chocolate Cake",
+                "Apple Cake",
+                "Carrot Cake"
+            ]
+        }
+    ]
+}
