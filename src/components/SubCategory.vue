@@ -19,7 +19,7 @@
     <div class="subcategory-container">
         <button @click="show = !show">{{ ParentName + " > " + SubCategory.name }}</button>
         <div class="grid" v-show="show">
-            <ClickableItems v-for="pack in SubCategory.packs" :key="pack" :Name="pack"/>
+            <ClickableItems v-for="pack in SubCategory.packs" :key="pack" :Name="pack.name" :Description="pack.description"/>
         </div>
     </div>
 </template>

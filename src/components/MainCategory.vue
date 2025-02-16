@@ -22,7 +22,7 @@
         <button @click="show = !show">{{ Category.name }}</button>
         <div class="content" v-show="show">
             <div class="grid">
-                <ClickableItems v-for="pack in Category.packs" :key="pack" :Name="pack"/>
+                <ClickableItems v-for="pack in Category.packs" :key="pack" :Name="pack.name" :Description="pack.description"/>
             </div>
             <SubCategory v-for="subcategory in Category.subcategories" :key="subcategory.name" :SubCategory="subcategory" />
         </div>

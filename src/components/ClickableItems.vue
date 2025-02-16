@@ -1,21 +1,35 @@
 <script setup lang="ts">
+    import { ref } from 'vue';
     defineProps({
         Name:{
             type: String,
             default: "Pack"
+        },
+        Description:{
+            type: String,
+            default: "Description"
         }
     })
+    const active = ref("")
+    const toggle = () => {
+        if (active.value === "") active.value = "active"
+        else active.value = ""
+    }
 </script>
 
 <template>
-<div>
+<div class="item-container" :class="active" @click="toggle">
     <img>
     <section>{{ Name }}</section>
+    <div class="item-description">{{ Description }}</div>
 </div>
 </template>
 
 <style scoped>
-    div {
+    * {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .item-container {
         background: #000000aa;
         width: 128px;
         height: 160px;
@@ -24,8 +38,16 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        transition: all 0.2s;
         &:hover{
             background: #000000ee;
+            cursor: pointer;
+        }
+    }
+    .item-container.active {
+        background-color: #888888aa;
+        &:hover{
+            background: #888888ee;
             cursor: pointer;
         }
     }
@@ -37,10 +59,26 @@
     }
     section {
         color: white;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-size: larger;
         text-align: center;
         margin: 10px 5px;
         font-weight: 600;
+    }
+    .item-description {
+        color: white;
+        position: absolute;
+        width: inherit;
+        text-align: center;
+        padding: 10px 10px;
+        border-radius: 16px;
+        transform: translateY(-110%);
+        background-color: #000000;
+        display: none;
+        filter: opacity(0);
+        transition: all 10s;
+    }
+    .item-container:hover .item-description {
+        display: block;
+        filter: opacity(1);
     }
 </style>
