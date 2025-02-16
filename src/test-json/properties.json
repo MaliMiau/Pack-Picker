@@ -1,36 +1,65 @@
 {
-    "categories": [
+    "versions": [
         {
-            "name": "Totems",
-            "packs": [
-                "Medkit Totem",
-                "One-Up Totem",
-                "Star Totem"
-            ],
-            "subcategories": [
+            "id": "1.21",
+            "categories": [
                 {
-                    "name": "Material Totems",
+                    "name": "Totems",
                     "packs": [
-                        "Iron Totem",
-                        "Redstone Totem",
-                        "Diamond Totem",
-                        "Copper Totem",
-                        "Emerald Totem",
-                        "Netherite Totem"
+                        "Medkit Totem",
+                        "One-Up Totem",
+                        "Star Totem"
+                    ],
+                    "subcategories": [
+                        {
+                            "name": "Material Totems",
+                            "packs": [
+                                "Iron Totem",
+                                "Redstone Totem",
+                                "Diamond Totem",
+                                "Copper Totem",
+                                "Emerald Totem",
+                                "Netherite Totem"
+                            ]
+                        },
+                        {
+                            "name": "Material Totems",
+                            "packs": [
+                                "Iron Totem",
+                                "Redstone Totem",
+                                "Diamond Totem",
+                                "Copper Totem",
+                                "Emerald Totem",
+                                "Netherite Totem"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Cakes",
+                    "packs": [
+                        "Strawberry Cake",
+                        "Chocolate Cake",
+                        "Apple Cake",
+                        "Carrot Cake",
+                        "Oreo Cake",
+                        "Coffee Cake",
+                        "Icecream Cake"
                     ]
                 }
             ]
         },
         {
-            "name": "Cakes",
-            "packs": [
-                "Strawberry Cake",
-                "Chocolate Cake",
-                "Apple Cake",
-                "Carrot Cake",
-                "Oreo Cake",
-                "Coffee Cake",
-                "Icecream Cake"
+            "id": "1.20",
+            "categories": [
+                {
+                    "name": "Totems",
+                    "packs": [
+                        "Medkit Totem",
+                        "One-Up Totem",
+                        "Star Totem"
+                    ]
+                }
             ]
         }
     ]

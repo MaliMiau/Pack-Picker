@@ -1,15 +1,20 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import ClickableItems from './ClickableItems.vue';
-import SubCategory from './SubCategory.vue';
-const show = ref(true)
+    import { ref } from "vue";
+    import ClickableItems from './ClickableItems.vue';
+    import SubCategory from './SubCategory.vue';
+    const show = ref(false)
 
-defineProps({
-    Category:{
-        type: Object,
-        default: JSON.parse('{"name": "Category", "packs": ["Pack"]}')
-    }
-})
+    const props = defineProps({
+        Category:{
+            type: Object,
+            default: JSON.parse('{"name": "Category", "packs": ["Pack"]}')
+        },
+        Index:{
+            type: Number,
+            default: 1
+        }
+    })
+    if(props.Index === 0) show.value = true
 </script>
 
 <template>

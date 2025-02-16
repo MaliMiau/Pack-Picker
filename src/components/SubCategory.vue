@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import ClickableItems from './ClickableItems.vue';
-const show = ref(false)
+    import { ref } from "vue";
+    import ClickableItems from './ClickableItems.vue';
+    const show = ref(false)
 
-defineProps({
-    SubCategory:{
-        type: Object,
-        default: JSON.parse('{"name": "Category", "packs": ["Pack"]}')
-    },
-    ParentName:{
-        type: String,
-        default: "Parent"
-    }
-})
+    defineProps({
+        SubCategory:{
+            type: Object,
+            default: JSON.parse('{"name": "Category", "packs": ["Pack"]}')
+        },
+        ParentName:{
+            type: String,
+            default: "Parent"
+        }
+    })
 </script>
 
 <template>

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-defineProps({
-    Name:{
-        type: String,
-        default: "Pack"
-    }
-})
+    defineProps({
+        Name:{
+            type: String,
+            default: "Pack"
+        }
+    })
 </script>
 
 <template>
