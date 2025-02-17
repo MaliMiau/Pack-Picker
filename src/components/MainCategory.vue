@@ -2,7 +2,7 @@
     import { ref } from "vue";
     import ClickableItems from './ClickableItems.vue';
     import SubCategory from './SubCategory.vue';
-    const show = ref(false)
+    const show = ref("hide")
 
     const props = defineProps({
         Category:{
@@ -14,13 +14,18 @@
             default: 1
         }
     })
-    if(props.Index === 0) show.value = true
+    if(props.Index === 0) show.value = "show"
+    const toggle = () => {
+        if (show.value == "hide") show.value = "show"
+        else show.value = "hide"
+        console.log(show.value)
+    }
 </script>
 
 <template>
     <div class="category-container">
-        <button @click="show = !show">{{ Category.name }}</button>
-        <div class="content" v-show="show">
+        <button @click="toggle">{{ Category.name }}</button>
+        <div class="content" :class="show">
             <div class="grid">
                 <ClickableItems v-for="pack in Category.packs" :key="pack" :Name="pack.name" :Description="pack.description" @update-selected="(n, a) => $emit('updateSelected', n, a, Category.name)"/>
             </div>
@@ -58,5 +63,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        transition: height 0.5s;
+        interpolate-size: allow-keywords;
+    }
+    .content.hide{
+        height: 0;
     }
 </style>

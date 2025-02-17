@@ -13,12 +13,18 @@
             default: "Parent"
         }
     })
+
+    const toggle = () => {
+        if (show.value == "hide") show.value = "show"
+        else show.value = "hide"
+        console.log(show.value)
+    }
 </script>
 
 <template>
     <div class="subcategory-container">
-        <button @click="show = !show">{{ ParentName + " > " + SubCategory.name }}</button>
-        <div class="grid" v-show="show">
+        <button @click="toggle">{{ ParentName + " > " + SubCategory.name }}</button>
+        <div class="grid" :class="show">
             <ClickableItems v-for="pack in SubCategory.packs" :key="pack" :Name="pack.name" :Description="pack.description" @update-selected="(n, a) => $emit('updateSelected', n, a)"/>
         </div>
     </div>
@@ -29,6 +35,8 @@
         display: grid;
         width: 170px;
         grid-template-columns: repeat(5, 1fr);
+        transition: height 0.5s;
+        interpolate-size: allow-keywords;
     }
     .subcategory-container {
         background: #00000066;
@@ -51,5 +59,9 @@
             background: #000000ee;
             cursor: pointer;
         }
+    }
+
+    .grid.hide{
+        height: 0;
     }
 </style>
