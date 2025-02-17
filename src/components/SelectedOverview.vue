@@ -23,5 +23,7 @@
 </template>
 
 <style scoped>
-
+    div {
+        width: 500px !important;
+    }
 </style>

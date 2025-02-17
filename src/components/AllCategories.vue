@@ -34,6 +34,8 @@
         background: #555;
         width: fit-content;
         padding: 16px;
+        flex-direction: column;
+        height: fit-content;
     }
     .version-controller {
         width: 100%;

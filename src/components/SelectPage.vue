@@ -26,10 +26,17 @@
 </script>
 
 <template>
-    <AllCategories :json="json" @update-selected="(n, a, c) => updateSelected(n, a, c)"/>
-    <SelectedOverview :Categories="Object.keys(selected)" :Selected="selected"/>
+    <div>
+        <AllCategories :json="json" @update-selected="(n, a, c) => updateSelected(n, a, c)"/>
+        <SelectedOverview :Categories="Object.keys(selected)" :Selected="selected"/>
+    </div>
 </template>
 
 <style scoped>
-
+    div{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+    }
 </style>
