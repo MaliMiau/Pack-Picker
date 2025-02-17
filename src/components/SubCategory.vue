@@ -13,17 +13,13 @@
             default: "Parent"
         }
     })
-    const emit = defineEmits(["updateSelected"])
-    const updateSelected = (name:string, active:string) => {
-        emit("updateSelected", name, active)
-    }
 </script>
 
 <template>
     <div class="subcategory-container">
         <button @click="show = !show">{{ ParentName + " > " + SubCategory.name }}</button>
         <div class="grid" v-show="show">
-            <ClickableItems v-for="pack in SubCategory.packs" :key="pack" :Name="pack.name" :Description="pack.description" @update-selected="(n, a) => updateSelected(n, a)"/>
+            <ClickableItems v-for="pack in SubCategory.packs" :key="pack" :Name="pack.name" :Description="pack.description" @update-selected="(n, a) => $emit('updateSelected', n, a)"/>
         </div>
     </div>
 </template>

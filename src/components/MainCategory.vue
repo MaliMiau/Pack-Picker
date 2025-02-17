@@ -15,11 +15,6 @@
         }
     })
     if(props.Index === 0) show.value = true
-    
-    const emit = defineEmits(["updateSelected"])
-    const updateSelected = (name:string, active:string) => {
-        emit("updateSelected", name, active, props.Category?.name)
-    }
 </script>
 
 <template>
@@ -27,9 +22,9 @@
         <button @click="show = !show">{{ Category.name }}</button>
         <div class="content" v-show="show">
             <div class="grid">
-                <ClickableItems v-for="pack in Category.packs" :key="pack" :Name="pack.name" :Description="pack.description" @update-selected="(n, a) => updateSelected(n, a)"/>
+                <ClickableItems v-for="pack in Category.packs" :key="pack" :Name="pack.name" :Description="pack.description" @update-selected="(n, a) => $emit('updateSelected', n, a, Category.name)"/>
             </div>
-            <SubCategory v-for="subcategory in Category.subcategories" :key="subcategory.name" :SubCategory="subcategory" @update-selected="(n, a) => updateSelected(n, a)"/>
+            <SubCategory v-for="subcategory in Category.subcategories" :key="subcategory.name" :SubCategory="subcategory" @update-selected="(n, a) => $emit('updateSelected', n, a, Category.name)"/>
         </div>
     </div>
 </template>

@@ -18,10 +18,6 @@
     const update_version = (id: string) => {
         current_version.value = indexes.indexOf(id)
     }
-    const emit = defineEmits(["updateSelected"])
-    const updateSelected = (name:string, active:string, category:string) => {
-        emit("updateSelected", name, active, category)
-    }
 </script>
 
 <template>
@@ -29,7 +25,7 @@
         <div class="version-controller">
             <p v-for="version in json.versions" :key="version.id" @click="update_version(version.id)">  {{ version.id }}</p>
         </div>
-        <MainCategory v-for="(category, index) in json.versions[current_version].categories" :key="category.name" :Category="category" :Index="index" @update-selected="(n, a, c) => updateSelected(n, a, c)"/>
+        <MainCategory v-for="(category, index) in json.versions[current_version].categories" :key="category.name" :Category="category" :Index="index" @update-selected="(n, a, c) => $emit('updateSelected', n, a, c)"/>
     </div>
 </template>
 
