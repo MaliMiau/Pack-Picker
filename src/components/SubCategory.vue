@@ -6,20 +6,24 @@
     defineProps({
         SubCategory:{
             type: Object,
-            default: JSON.parse('{"name": "Category", "packs": ["Pack"]}')
+            default: JSON.parse('{"name": "Category", "packs": [{"name":"Pack", "description":"Description"}]}')
         },
         ParentName:{
             type: String,
             default: "Parent"
         }
     })
+    const emit = defineEmits(["updateSelected"])
+    const updateSelected = (name:string, active:string) => {
+        emit("updateSelected", name, active)
+    }
 </script>
 
 <template>
     <div class="subcategory-container">
         <button @click="show = !show">{{ ParentName + " > " + SubCategory.name }}</button>
         <div class="grid" v-show="show">
-            <ClickableItems v-for="pack in SubCategory.packs" :key="pack" :Name="pack.name" :Description="pack.description"/>
+            <ClickableItems v-for="pack in SubCategory.packs" :key="pack" :Name="pack.name" :Description="pack.description" @update-selected="(n, a) => updateSelected(n, a)"/>
         </div>
     </div>
 </template>
@@ -31,11 +35,12 @@
         grid-template-columns: repeat(5, 1fr);
     }
     .subcategory-container {
-        background-color: green;
+        background: #00000066;
         width: 814px;
+        margin-bottom: 16px;
         border-radius: 16px;
         overflow: hidden;
-        margin-bottom: 16px;
+        box-shadow: inset 0 0 0 8px #00000066;
     }
     button {
         width: 100%;

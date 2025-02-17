@@ -1,16 +1,26 @@
 <script setup lang="ts">
     import { ref } from 'vue';
     import MainCategory from './MainCategory.vue';
-    import json from '../test-json/properties.json'
+    const props = defineProps({
+        json:{
+            type: Object,
+            default:JSON.parse('{"versions": [{"id": "1.21", "categories":[{"name": "Category", "packs": [{"name":"Pack", "description":"Description"}]}]}]}'),
+            required: true
+        }
+    })
     const indexes:string[] = []
 
-    json.versions.forEach(version => {
+    props.json?.versions.forEach((version: { id: string; }) => {
         indexes.push(version.id)
     });
 
     const current_version = ref(0)
     const update_version = (id: string) => {
         current_version.value = indexes.indexOf(id)
+    }
+    const emit = defineEmits(["updateSelected"])
+    const updateSelected = (name:string, active:string, category:string) => {
+        emit("updateSelected", name, active, category)
     }
 </script>
 
@@ -19,13 +29,13 @@
         <div class="version-controller">
             <p v-for="version in json.versions" :key="version.id" @click="update_version(version.id)">  {{ version.id }}</p>
         </div>
-        <MainCategory v-for="(category, index) in json.versions[current_version].categories" :key="category.name" :Category="category" :Index="index"/>
+        <MainCategory v-for="(category, index) in json.versions[current_version].categories" :key="category.name" :Category="category" :Index="index" @update-selected="(n, a, c) => updateSelected(n, a, c)"/>
     </div>
 </template>
 
 <style scoped>
     .container {
-        background-color: blue;
+        background: #555;
         width: fit-content;
         padding: 16px;
     }

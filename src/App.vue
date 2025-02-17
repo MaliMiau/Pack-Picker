@@ -1,9 +1,9 @@
 <script setup lang="ts">
-    import AllCategories from './components/AllCategories.vue';
+    import SelectPage from './components/SelectPage.vue';
 </script>
 
 <template>
-    <AllCategories/>
+    <SelectPage/>
 </template>
 
 <style scoped>

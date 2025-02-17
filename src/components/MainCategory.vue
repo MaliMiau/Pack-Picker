@@ -15,6 +15,11 @@
         }
     })
     if(props.Index === 0) show.value = true
+    
+    const emit = defineEmits(["updateSelected"])
+    const updateSelected = (name:string, active:string) => {
+        emit("updateSelected", name, active, props.Category?.name)
+    }
 </script>
 
 <template>
@@ -22,9 +27,9 @@
         <button @click="show = !show">{{ Category.name }}</button>
         <div class="content" v-show="show">
             <div class="grid">
-                <ClickableItems v-for="pack in Category.packs" :key="pack" :Name="pack.name" :Description="pack.description"/>
+                <ClickableItems v-for="pack in Category.packs" :key="pack" :Name="pack.name" :Description="pack.description" @update-selected="(n, a) => updateSelected(n, a)"/>
             </div>
-            <SubCategory v-for="subcategory in Category.subcategories" :key="subcategory.name" :SubCategory="subcategory" />
+            <SubCategory v-for="subcategory in Category.subcategories" :key="subcategory.name" :SubCategory="subcategory" @update-selected="(n, a) => updateSelected(n, a)"/>
         </div>
     </div>
 </template>
@@ -36,11 +41,12 @@
         grid-template-columns: repeat(6, 1fr);
     }
     .category-container {
-        background-color: red;
+        background: #00000066;
         width: 962px;
         margin-top: 16px;
         border-radius: 16px;
         overflow: hidden;
+        box-shadow: inset 0 0 0 8px #00000066;
     }
     button {
         width: 100%;
@@ -51,10 +57,7 @@
         text-align: left;
         text-indent: 16px;
         font-size: large;
-        &:hover {
-            background: #000000ee;
-            cursor: pointer;
-        }
+        cursor: pointer;
     }
     .content {
         display: flex;

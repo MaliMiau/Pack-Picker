@@ -48,35 +48,6 @@
                                     "description": "Changes the totem of undying material to Copper."
                                 }
                             ]
-                        },
-                        {
-                            "name": "Material Totems",
-                            "packs": [
-                                {
-                                    "name": "Iron Totem", 
-                                    "description": "Changes the totem of undying material to Iron."
-                                },
-                                {
-                                    "name": "Redstone Totem", 
-                                    "description": "Changes the totem of undying material to Redstone."
-                                },
-                                {
-                                    "name": "Gold Totem", 
-                                    "description": "Changes the totem of undying material to Gold."
-                                },
-                                {
-                                    "name": "Diamond Totem", 
-                                    "description": "Changes the totem of undying material to Diamond."
-                                },
-                                {
-                                    "name": "Netherite Totem", 
-                                    "description": "Changes the totem of undying material to Netherite."
-                                },
-                                {
-                                    "name": "Copper Totem", 
-                                    "description": "Changes the totem of undying material to Copper."
-                                }
-                            ]
                         }
                     ]
                 },

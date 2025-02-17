@@ -10,15 +10,15 @@
             default: "Description"
         }
     })
-    const active = ref("")
+    const active = ref("inactive")
     const toggle = () => {
-        if (active.value === "") active.value = "active"
-        else active.value = ""
+        if (active.value === "inactive") active.value = "active"
+        else active.value = "inactive"
     }
 </script>
 
 <template>
-<div class="item-container" :class="active" @click="toggle">
+<div class="item-container" :class="active" @click="toggle();$emit('updateSelected', Name, active)">
     <img>
     <section>{{ Name }}</section>
     <div class="item-description">{{ Description }}</div>
@@ -30,7 +30,7 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     .item-container {
-        background: #000000aa;
+        background: #000000bb;
         width: 128px;
         height: 160px;
         border-radius: 24px;
@@ -40,14 +40,14 @@
         align-items: center;
         transition: all 0.2s;
         &:hover{
-            background: #000000ee;
+            background: #444444bb;
             cursor: pointer;
         }
     }
     .item-container.active {
-        background-color: #888888aa;
+        background-color: #888888bb;
         &:hover{
-            background: #888888ee;
+            background: #aaaaaabb;
             cursor: pointer;
         }
     }
