@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import { ref } from "vue";
     import ClickableItems from './ClickableItems.vue';
-    const show = ref(false)
+    const show = ref("hide")
 
     defineProps({
         SubCategory:{

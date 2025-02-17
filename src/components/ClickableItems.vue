@@ -77,8 +77,9 @@
         filter: opacity(0);
         transition: all 10s;
     }
-    .item-container:hover .item-description {
+    .item-container:hover .item-description:not(:hover) {
         display: block;
         filter: opacity(1);
     }
+
 </style>
