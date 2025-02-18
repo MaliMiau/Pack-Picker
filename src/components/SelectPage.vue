@@ -2,11 +2,11 @@
     import { ref } from 'vue';
     import AllCategories from './AllCategories.vue';
     import SideBar from './SideBar.vue';
-    import json from '../test-json/properties.json'
+    import json from '../assets/test-json/properties.json'
     const selected = ref({})
+    const selectedVersion = ref(json.versions[0].id)
 
     const updateSelected = (name:string, active:string, category: string) => {
-        console.log(name, active, category)
         let selected_temp = selected.value[category as keyof object] as string[]
         if(selected_temp === undefined){
             selected_temp = []
@@ -21,15 +21,21 @@
             }
         }
         selected.value[category as keyof object] = selected_temp as never
-        console.log(selected.value)
     }
     
 </script>
 
 <template>
     <div>
-        <AllCategories :json="json" @update-selected="(n, a, c) => updateSelected(n, a, c)"/>
-        <SideBar :Categories="Object.keys(selected)" :Selected="selected"/>
+        <AllCategories 
+            :json="json" @update-selected="(n, a, c) => updateSelected(n, a, c)" 
+            @update-version="(v) => selectedVersion = v"
+        />
+
+        <SideBar 
+            :Categories="Object.keys(selected)" 
+            :Selected="selected"
+        />
     </div>
 </template>
 

@@ -17,22 +17,24 @@
     const toggle = () => {
         if (show.value == "hide") show.value = "show"
         else show.value = "hide"
-        console.log(show.value)
     }
 </script>
 
 <template>
     <div class="subcategory-container">
         <button @click="toggle">
-            
             {{ ParentName }}
             >
-            <b>
-                {{ SubCategory.name }}
-            </b>
+            <b> {{ SubCategory.name }} </b>
         </button>
         <div class="grid" :class="show">
-            <ClickableItems v-for="pack in SubCategory.packs" :key="pack" :Name="pack.name" :Description="pack.description" @update-selected="(n, a) => $emit('updateSelected', n, a)"/>
+            <ClickableItems 
+                v-for="pack in SubCategory.packs" 
+                :key="pack" 
+                :Name="pack.name" 
+                :Description="pack.description" 
+                @update-selected="(n, a) => $emit('updateSelected', n, a)"
+            />
         </div>
     </div>
 </template>

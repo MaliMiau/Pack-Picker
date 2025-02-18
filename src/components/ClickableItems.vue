@@ -18,11 +18,11 @@
 </script>
 
 <template>
-<div class="item-container" :class="active" @click="toggle();$emit('updateSelected', Name, active)">
-    <img>
-    <section>{{ Name }}</section>
-    <div class="item-description">{{ Description }}</div>
-</div>
+    <div class="item-container" :class="active" @click="toggle();$emit('updateSelected', Name, active)">
+        <img>
+        <section>{{ Name }}</section>
+        <div class="item-description">{{ Description }}</div>
+    </div>
 </template>
 
 <style scoped>
