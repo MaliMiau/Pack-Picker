@@ -8,6 +8,10 @@
         Description:{
             type: String,
             default: "Description"
+        },
+        Incompatibilities:{
+            type: Array,
+            required: true
         }
     })
     const active = ref("inactive")
@@ -18,7 +22,10 @@
 </script>
 
 <template>
-    <div class="item-container" :class="active" @click="toggle();$emit('updateSelected', Name, active)">
+    <div 
+    class="item-container" 
+    :class="[active, Incompatibilities.includes(Name) ? 'incompatible' : 'compatible']" 
+    @click="toggle();$emit('updateSelected', Name, active)">
         <img>
         <section>{{ Name }}</section>
         <div class="item-description">{{ Description }}</div>
@@ -77,5 +84,7 @@
         display: block;
         filter: opacity(1);
     }
-
+    .incompatible{
+        background: #cc0000bb !important;
+    }
 </style>

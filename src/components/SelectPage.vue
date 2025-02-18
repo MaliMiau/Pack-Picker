@@ -73,7 +73,9 @@
 <template>
     <div>
         <AllCategories 
-            :json="json" @update-selected="(n, a, c) => updateSelected(n, a, c)" 
+            :json="json" 
+            :Incompatibilities="knownIncompatibilities"
+            @update-selected="(n, a, c) => updateSelected(n, a, c)" 
             @update-version="(v) => selectedVersion = v"
         />
 

@@ -6,6 +6,10 @@
             type: Object,
             default:JSON.parse('{"versions": [{"id": "1.21", "categories":[{"name": "Category", "packs": [{"name":"Pack", "description":"Description"}]}]}]}'),
             required: true
+        },
+        Incompatibilities:{
+            type: Array,
+            required: true
         }
     })
     const indexes:string[] = []
@@ -34,7 +38,9 @@
             v-for="(category, index) in json.versions[current_version].categories" 
             :key="category.name" 
             :Category="category" 
-            :Index="index" @update-selected="(n, a, c) => $emit('updateSelected', n, a, c)"
+            :Index="index" 
+            :Incompatibilities="Incompatibilities"
+            @update-selected="(n, a, c) => $emit('updateSelected', n, a, c)"
         />
     </div>
 </template>

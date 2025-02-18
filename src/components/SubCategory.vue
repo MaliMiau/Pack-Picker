@@ -11,6 +11,10 @@
         ParentName:{
             type: String,
             default: "Parent"
+        },
+        Incompatibilities:{
+            type: Array,
+            required: true
         }
     })
 
@@ -33,6 +37,7 @@
                 :key="pack" 
                 :Name="pack.name" 
                 :Description="pack.description" 
+                :Incompatibilities="Incompatibilities"
                 @update-selected="(n, a) => $emit('updateSelected', n, a)"
             />
         </div>

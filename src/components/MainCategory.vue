@@ -12,6 +12,10 @@
         Index:{
             type: Number,
             default: 1
+        },
+        Incompatibilities:{
+            type: Array,
+            required: true
         }
     })
     if(props.Index === 0) show.value = "show"
@@ -36,6 +40,7 @@
                     :key="pack" 
                     :Name="pack.name" 
                     :Description="pack.description" 
+                    :Incompatibilities="Incompatibilities"
                     @update-selected="(n, a) => $emit('updateSelected', n, a, Category.name)"
                 />
             </div>
@@ -45,6 +50,7 @@
                 :key="subcategory.name" 
                 :SubCategory="subcategory" 
                 :ParentName="Category.name" 
+                :Incompatibilities="Incompatibilities"
                 @update-selected="(n, a) => $emit('updateSelected', n, a, Category.name)"
             />
 
