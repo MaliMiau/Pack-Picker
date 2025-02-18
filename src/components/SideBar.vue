@@ -15,10 +15,10 @@
     <div class="sidebar-container">
         <div class="title">Mali's Pack Picker</div>
         <img>
-        <div>
+        <div class="list">
             <ul v-for="category in Categories" :key="category as string">
                 {{ category }}
-                <li v-for="pack in Selected[category as keyof object]" :key="pack">
+                <li v-for="pack in Selected[category as keyof object]" :key="pack as string">
                     {{ pack }}
                 </li>
             </ul>   
@@ -53,7 +53,7 @@
     ul {
         color: white;
         list-style-type: none;
-        margin: 24px;
+        margin: 8px 24px 24px 16px;
         margin-top: 8px;
         padding: 0;
         font-size: x-large;
@@ -85,6 +85,24 @@
         &:disabled{
             background: #888888bb;
             color: silver;
+        }
+    }
+    .list{
+        max-height: 400px;
+        margin: 0 16px 24px 8px;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+            width: 10px;
+        }
+        &::-webkit-scrollbar-track {
+            background: none;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: #222;
+            border-radius: 16px;
+        }
+        &::-webkit-scrollbar-thumb:hover {
+            background: #555;
         }
     }
 </style>

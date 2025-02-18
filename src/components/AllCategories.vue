@@ -18,7 +18,7 @@
     const current_version = ref(0)
     const update_version = (id: string) => {
         current_version.value = indexes.indexOf(id)
-        emit('updateVersion', id)
+        emit('updateVersion', indexes.indexOf(id))
     }
 </script>
 

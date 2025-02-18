@@ -16,7 +16,7 @@
                         },
                         {
                             "name": "Star Totem", 
-                            "description": "Changes the totem of undying into a Star."
+                            "description": "Changes the totem of undying into a Star. <i> Warning! </i>"
                         }
                     ],
                     "subcategories": [
@@ -80,7 +80,12 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "incompatibilities":{
+                "MedKit Totem": ["One-Up Totem", "Star Totem"],
+                "One-Up Totem": ["MedKit Totem", "Star Totem"],
+                "Star Totem":   ["MedKit Totem", "One-Up Totem"]
+            }
         },
         {
             "id": "1.20",
