@@ -83,8 +83,8 @@
             ],
             "incompatibilities":{
                 "MedKit Totem": ["One-Up Totem", "Star Totem"],
-                "One-Up Totem": ["MedKit Totem", "Star Totem"],
-                "Star Totem":   ["MedKit Totem", "One-Up Totem"]
+                "One-Up Totem": ["MedKit Totem"],
+                "Star Totem":   ["MedKit Totem"]
             }
         },
         {

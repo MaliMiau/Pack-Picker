@@ -80,6 +80,7 @@
         <SideBar 
             :Categories="Object.keys(selected)" 
             :Selected="selected"
+            :Incompatibilities="knownIncompatibilities"
         />
     </div>
 </template>

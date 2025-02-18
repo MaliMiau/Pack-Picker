@@ -7,6 +7,10 @@
         Selected: {
             type:Object,
             required: true
+        },
+        Incompatibilities: {
+            type: Array,
+            required: true
         }
     })
 </script>
@@ -18,7 +22,9 @@
         <div class="list">
             <ul v-for="category in Categories" :key="category as string">
                 {{ category }}
-                <li v-for="pack in Selected[category as keyof object]" :key="pack as string">
+                <li v-for="pack in Selected[category as keyof object]" 
+                :key="pack as string"
+                :class="Incompatibilities.includes(pack) ? 'incompatible' : 'compatible'">
                     {{ pack }}
                 </li>
             </ul>   
@@ -104,5 +110,8 @@
         &::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
+    }
+    .incompatible{
+        color:red
     }
 </style>
