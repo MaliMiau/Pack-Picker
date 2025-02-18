@@ -16,6 +16,10 @@
         Incompatibilities:{
             type: Array,
             required: true
+        },
+        jsonIncompatibilities:{
+            type: Object,
+            required: true
         }
     })
     if(props.Index === 0) show.value = "show"
@@ -41,6 +45,7 @@
                     :Name="pack.name" 
                     :Description="pack.description" 
                     :Incompatibilities="Incompatibilities"
+                    :IncompatibilitiesList="jsonIncompatibilities[pack.name]"
                     @update-selected="(n, a) => $emit('updateSelected', n, a, Category.name)"
                 />
             </div>

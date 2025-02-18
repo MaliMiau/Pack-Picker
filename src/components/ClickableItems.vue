@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { ref } from 'vue';
-    defineProps({
+    const props = defineProps({
         Name:{
             type: String,
             default: "Pack"
@@ -12,8 +12,13 @@
         Incompatibilities:{
             type: Array,
             required: true
+        },
+        IncompatibilitiesList:{
+            type: Array,
+            default: () => ["a"]
         }
     })
+    console.log(props.Name, props.IncompatibilitiesList)
     const active = ref("inactive")
     const toggle = () => {
         if (active.value === "inactive") active.value = "active"
@@ -29,6 +34,12 @@
         <img>
         <section>{{ Name }}</section>
         <div class="item-description">{{ Description }}</div>
+        <div class="item-incompatibilities">
+            Incompatible with: 
+            <i v-for="(name, index) in IncompatibilitiesList" :key="name as string">
+                {{ name }}{{ index !== IncompatibilitiesList.length-1 ? ", " : "." }}
+            </i>
+        </div>
     </div>
 </template>
 
@@ -86,5 +97,22 @@
     }
     .incompatible{
         background: #cc0000bb !important;
+    }
+    .item-incompatibilities {
+        color: white;
+        position: absolute;
+        width: fit-content;
+        text-align: center;
+        padding: 10px 10px;
+        border-radius: 16px;
+        transform: translateY(168px);
+        background-color: #cc0000;
+        display: none;
+        filter: opacity(0);
+        transition: all 10s;
+    }
+    .item-container.incompatible:hover .item-incompatibilities:not(:hover) {
+        display: block;
+        filter: opacity(1);
     }
 </style>

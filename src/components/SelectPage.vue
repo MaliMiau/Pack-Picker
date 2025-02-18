@@ -75,6 +75,7 @@
         <AllCategories 
             :json="json" 
             :Incompatibilities="knownIncompatibilities"
+            :jsonIncompatibilities="json.versions[selectedVersion].incompatibilities as unknown as object"
             @update-selected="(n, a, c) => updateSelected(n, a, c)" 
             @update-version="(v) => selectedVersion = v"
         />

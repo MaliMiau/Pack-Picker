@@ -10,6 +10,10 @@
         Incompatibilities:{
             type: Array,
             required: true
+        },
+        jsonIncompatibilities:{
+            type: Object,
+            required: true
         }
     })
     const indexes:string[] = []
@@ -40,6 +44,7 @@
             :Category="category" 
             :Index="index" 
             :Incompatibilities="Incompatibilities"
+            :jsonIncompatibilities="jsonIncompatibilities"
             @update-selected="(n, a, c) => $emit('updateSelected', n, a, c)"
         />
     </div>
