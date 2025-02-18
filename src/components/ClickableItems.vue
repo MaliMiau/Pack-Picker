@@ -26,9 +26,6 @@
 </template>
 
 <style scoped>
-    * {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
     .item-container {
         background: #000000bb;
         width: 128px;
@@ -62,7 +59,6 @@
         font-size: larger;
         text-align: center;
         margin: 10px 5px;
-        font-weight: 600;
     }
     .item-description {
         color: white;

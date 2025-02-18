@@ -23,7 +23,14 @@
 
 <template>
     <div class="subcategory-container">
-        <button @click="toggle">{{ ParentName + " > " + SubCategory.name }}</button>
+        <button @click="toggle">
+            
+            {{ ParentName }}
+            >
+            <b>
+                {{ SubCategory.name }}
+            </b>
+        </button>
         <div class="grid" :class="show">
             <ClickableItems v-for="pack in SubCategory.packs" :key="pack" :Name="pack.name" :Description="pack.description" @update-selected="(n, a) => $emit('updateSelected', n, a)"/>
         </div>
@@ -51,10 +58,11 @@
         height: 48px;
         background: #000000bb;
         border: 0;
-        color: white;
+        color: silver;
         text-align: left;
         text-indent: 16px;
         font-size: large;
+        font-weight: 400;
         &:hover {
             background: #000000ee;
             cursor: pointer;

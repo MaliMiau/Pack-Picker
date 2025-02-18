@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import { ref } from 'vue';
     import AllCategories from './AllCategories.vue';
-    import SelectedOverview from './SelectedOverview.vue';
+    import SideBar from './SideBar.vue';
     import json from '../test-json/properties.json'
     const selected = ref({})
 
@@ -28,7 +28,7 @@
 <template>
     <div>
         <AllCategories :json="json" @update-selected="(n, a, c) => updateSelected(n, a, c)"/>
-        <SelectedOverview :Categories="Object.keys(selected)" :Selected="selected"/>
+        <SideBar :Categories="Object.keys(selected)" :Selected="selected"/>
     </div>
 </template>
 
@@ -38,5 +38,6 @@
         flex-direction: row;
         width: 100%;
         justify-content: center;
+        gap: 20px;
     }
 </style>

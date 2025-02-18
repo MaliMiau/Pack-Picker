@@ -36,6 +36,7 @@
         padding: 16px;
         flex-direction: column;
         height: fit-content;
+        gap: 0;
     }
     .version-controller {
         width: 100%;
@@ -46,14 +47,16 @@
         display: flex;
         flex-direction: row-reverse;
         color: white;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-weight: 600;
+        gap: 16px;
         & p{
             &:not(:last-child):before{
                 content: "/";
+                cursor: auto;
                 margin-right: 16px;
             }
-            margin-right: 16px;
+            &:first-child{
+                margin-right: 16px;
+            }
             cursor: pointer;
         }
     }
