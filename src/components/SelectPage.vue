@@ -21,6 +21,7 @@
             }
         }
         selected.value[category as keyof object] = selected_temp as never
+        console.log(selected.value)
     }
     
 </script>

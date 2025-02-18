@@ -21,8 +21,9 @@
                 <li v-for="pack in Selected[category as keyof object]" :key="pack">
                     {{ pack }}
                 </li>
-            </ul>
+            </ul>   
         </div>
+        <button :disabled="JSON.stringify(Selected) === '{}'">Download</button>
     </div>
 </template>
 
@@ -35,7 +36,7 @@
         gap: 16px;
         background-color: #000000bb;
     }
-    .title{
+    .title {
         background-color: black;
         color: white;
         font-size: x-large;
@@ -43,19 +44,19 @@
         line-height: 64px;
         text-align: center;
     }
-    img{
+    img {
         width: 320px;
         height: 180px;
         background-color: black;
         border: 0
     }
-    ul{
+    ul {
         color: white;
         list-style-type: none;
         margin: 24px;
+        margin-top: 8px;
         padding: 0;
         font-size: x-large;
-        user-select: none;
         &::before{
             content: "⬍ ";
             cursor: move;
@@ -64,10 +65,26 @@
     li {
         font-size: large;
         margin-left: 16px;
-        user-select: none;
         &::before{
             content: "⬍ ";
             cursor: move;
+        }
+    }
+    button {
+        margin: -16px 16px 16px 16px;
+        border: 0;
+        background: #000000bb;
+        border-radius: 16px;
+        font-size: larger;
+        line-height: 48px;
+        transition: all 0.2s;
+        &:hover{
+            cursor: pointer;
+            background: #888888bb;
+        }
+        &:disabled{
+            background: #888888bb;
+            color: silver;
         }
     }
 </style>
