@@ -13,6 +13,61 @@
             required: true
         }
     })
+    var dragging: HTMLElement
+    var draggingLi = false
+    var draggingUl = false
+
+    function dragOver(e: Event) {
+        if (!(e.target instanceof HTMLElement)) return
+        if (!(e.target.parentNode instanceof HTMLElement)) return
+        if (e.target.parentNode !== dragging.parentNode) return
+        if (isBefore(dragging, e.target)){
+            e.target.parentNode.insertBefore(dragging, e.target);
+        }
+        else{
+            e.target.parentNode.insertBefore(dragging, e.target.nextSibling);
+        }
+        console.log(draggingLi, draggingUl)
+    }
+
+    function dragStart(e: DragEvent) {
+        if (!(e.dataTransfer instanceof DataTransfer)) return
+        e.dataTransfer.effectAllowed = "move";
+        e.dataTransfer.setData("text/plain", ""); // Thanks to bqlou for their comment.
+        dragging = e.target as HTMLElement;
+    }
+
+    function isBefore(el1: HTMLElement, el2: HTMLElement) {
+        for (var cur = el1.previousSibling; cur && cur.nodeType !== 9; cur = cur.previousSibling)
+        if (cur === el2)
+            return true;
+        return false;
+    }
+
+    function canDragLi(e: DragEvent){
+        if(draggingUl) return
+        draggingLi = true
+        dragStart(e)
+    }
+    function canDragUl(e: DragEvent){
+        if(draggingLi) return
+        draggingUl = true
+        dragStart(e)
+    }
+    function dragOverLi(e: DragEvent){
+        if(draggingUl) return
+        dragOver(e)
+    }
+    function dragOverUl(e: DragEvent){
+        if(draggingLi) return
+        dragOver(e)
+    }
+    function stopDragLi(){
+        draggingLi = false
+    }
+    function stopDragUl(){
+        draggingUl = false
+    }
 </script>
 
 <template>
@@ -20,9 +75,20 @@
         <div class="title">Mali's Pack Picker</div>
         <img>
         <div class="list">
-            <ul v-for="category in Categories" :key="category as string">
+            <ul 
+            :draggable="true"
+            :ondragover="dragOverUl"
+            :ondragstart="canDragUl"
+            :ondragend="stopDragUl"
+            v-for="category in Categories" 
+            :key="category as string">
                 {{ category }}
-                <li v-for="pack in Selected[category as keyof object]" 
+                <li 
+                :draggable="true"
+                :ondragover="dragOverLi"
+                :ondragstart="canDragLi"
+                :ondragend="stopDragLi"
+                v-for="pack in Selected[category as keyof object]" 
                 :key="pack as string"
                 :class="Incompatibilities.includes(pack) ? 'incompatible' : 'compatible'">
                     {{ pack }}
@@ -63,9 +129,9 @@
         margin-top: 8px;
         padding: 0;
         font-size: x-large;
+        cursor: move;
         &::before{
             content: "⬍ ";
-            cursor: move;
         }
     }
     li {
@@ -73,7 +139,6 @@
         margin-left: 16px;
         &::before{
             content: "⬍ ";
-            cursor: move;
         }
     }
     button {
