@@ -56,6 +56,7 @@
                 :SubCategory="subcategory" 
                 :ParentName="Category.name" 
                 :Incompatibilities="Incompatibilities"
+                :jsonIncompatibilities="jsonIncompatibilities"
                 @update-selected="(n, a) => $emit('updateSelected', n, a, Category.name)"
             />
 

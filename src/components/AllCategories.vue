@@ -4,7 +4,7 @@
     const props = defineProps({
         json:{
             type: Object,
-            default:JSON.parse('{"versions": [{"id": "1.21", "categories":[{"name": "Category", "packs": [{"name":"Pack", "description":"Description"}]}]}]}'),
+            default:JSON.parse('{"versions": [{"id": "version", "categories":[{"name": "Category", "packs": [{"name":"Pack", "description":"Description"}]}]}]}'),
             required: true
         },
         Incompatibilities:{
@@ -13,7 +13,7 @@
         },
         jsonIncompatibilities:{
             type: Object,
-            required: true
+            default: () => ({"a": [""]})
         }
     })
     const indexes:string[] = []

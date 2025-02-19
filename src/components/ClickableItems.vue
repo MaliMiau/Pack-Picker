@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { ref } from 'vue';
-    const props = defineProps({
+    defineProps({
         Name:{
             type: String,
             default: "Pack"
@@ -15,10 +15,9 @@
         },
         IncompatibilitiesList:{
             type: Array,
-            default: () => ["a"]
+            default: () => [""]
         }
     })
-    console.log(props.Name, props.IncompatibilitiesList)
     const active = ref("inactive")
     const toggle = () => {
         if (active.value === "inactive") active.value = "active"

@@ -14,6 +14,10 @@
         },
         Incompatibilities:{
             type: Array,
+            default: () => [""]
+        },
+        jsonIncompatibilities:{
+            type: Object,
             required: true
         }
     })
@@ -38,6 +42,7 @@
                 :Name="pack.name" 
                 :Description="pack.description" 
                 :Incompatibilities="Incompatibilities"
+                :IncompatibilitiesList="jsonIncompatibilities[pack.name]"
                 @update-selected="(n, a) => $emit('updateSelected', n, a)"
             />
         </div>
