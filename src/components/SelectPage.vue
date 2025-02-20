@@ -2,7 +2,7 @@
     import { ref } from 'vue';
     import AllCategories from './AllCategories.vue';
     import SideBar from './SideBar.vue';
-    import json from '../assets/test-json/properties.json'
+    import json from '../assets/data/data.json'
     const selected = ref({})
     const selectedVersion = ref(0)
     const possibleIncompatibilities = ref([] as string[])
