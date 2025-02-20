@@ -13,6 +13,8 @@
             required: true
         }
     })
+    const emit = defineEmits(["sortedItems", "sortedCategories"])
+
     var dragging: HTMLElement
     var draggingLi = false
     var draggingUl = false
@@ -62,11 +64,20 @@
         if(draggingLi) return
         dragOver(e)
     }
-    function stopDragLi(){
+    function stopDragLi(e: DragEvent){
+        if(!draggingLi) return
         draggingLi = false
+        if(!(e.target instanceof HTMLElement)) return
+        let arr = Array.from(e.target.parentElement?.children as HTMLCollection, (element) => element.innerHTML)
+        let cat = e.target.parentElement?.innerHTML.split("<li")[0].trim()
+        emit("sortedItems", cat, arr)
     }
-    function stopDragUl(){
+    function stopDragUl(e: DragEvent){
+        if(!draggingUl) return
         draggingUl = false
+        if(!(e.target instanceof HTMLElement)) return
+        let arr = Array.from(e.target.parentElement?.children as HTMLCollection, (element) => element.innerHTML.split("<li")[0].trim())
+        emit("sortedCategories", arr)
     }
 </script>
 

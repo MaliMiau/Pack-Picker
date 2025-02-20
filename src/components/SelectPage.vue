@@ -68,6 +68,16 @@
 
         })
     }
+
+    const sortedItems = (category: string, arrayItems: Array<string>) => {
+        console.log(arrayItems, category)
+        console.log(selected.value)
+        selected.value[category as keyof object] = arrayItems as never
+        console.log(selected.value)
+    }
+    const sortedCategories = (arrayCategories: Array<string>) => {
+        console.log(arrayCategories)
+    }
 </script>
 
 <template>
@@ -84,6 +94,8 @@
             :Categories="Object.keys(selected)" 
             :Selected="selected"
             :Incompatibilities="knownIncompatibilities"
+            @sorted-items="(c, a) => sortedItems(c, a)"
+            @sorted-categories="(a) => sortedCategories(a)"
         />
     </div>
 </template>
