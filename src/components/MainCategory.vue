@@ -2,7 +2,7 @@
     import { ref } from "vue";
     import ClickableItems from './ClickableItems.vue';
     import SubCategory from './SubCategory.vue';
-    const show = ref("hide")
+    const show = ref(false)
 
     const props = defineProps({
         Category:{
@@ -22,21 +22,17 @@
             required: true
         }
     })
-    if(props.Index === 0) show.value = "show"
-    const toggle = () => {
-        if (show.value == "hide") show.value = "show"
-        else show.value = "hide"
-    }
+    if(props.Index === 0) show.value = true
 </script>
 
 <template>
     <div class="category-container">
         
-        <button @click="toggle">
+        <button @click="show = !show">
             {{ Category.name }}
         </button>
 
-        <div class="content" :class="show">
+        <div class="content" :class="show ? 'show' : 'hide'">
 
             <div class="grid">
                 <ClickableItems 

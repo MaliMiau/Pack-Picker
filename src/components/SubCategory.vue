@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import { ref } from "vue";
     import ClickableItems from './ClickableItems.vue';
-    const show = ref("hide")
+    const show = ref(false)
 
     defineProps({
         SubCategory:{
@@ -21,21 +21,16 @@
             required: true
         }
     })
-
-    const toggle = () => {
-        if (show.value == "hide") show.value = "show"
-        else show.value = "hide"
-    }
 </script>
 
 <template>
     <div class="subcategory-container">
-        <button @click="toggle">
+        <button @click="show = !show">
             {{ ParentName }}
             >
             <b> {{ SubCategory.name }} </b>
         </button>
-        <div class="grid" :class="show">
+        <div class="grid" :class="show ? 'show' : 'hide'">
             <ClickableItems 
                 v-for="pack in SubCategory.packs" 
                 :key="pack" 
