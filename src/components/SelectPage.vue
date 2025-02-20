@@ -4,11 +4,11 @@
     import SideBar from './SideBar.vue';
     import json from '../assets/test-json/properties.json'
     const selected = ref({})
-    const selectedVersion = ref(0 as number)
+    const selectedVersion = ref(0)
     const possibleIncompatibilities = ref([] as string[])
     const knownIncompatibilities = ref([] as string[])
 
-    const updateSelected = (name:string, active:string, category: string) => {
+    const updateSelected = (name:string, active: boolean, category: string) => {
         let selected_temp = selected.value[category as keyof object] as string[]
         if(selected_temp === undefined){
             selected_temp = []
@@ -30,42 +30,36 @@
     }
 
     const checkIncompatibilities = (pack: string, add: boolean) => {
-        if(json.versions[selectedVersion.value].incompatibilities?.[pack as keyof object] === undefined) return
+        let incom_obj = json.versions[selectedVersion.value].incompatibilities as object
+        if(incom_obj[pack as keyof object] === undefined) return
         
         if(add){
             possibleIncompatibilities.value.push(pack)
-
-            if(possibleIncompatibilities.value.length > 1){
-                possibleIncompatibilities.value.every((name: string) => {
-                    let incompatibilites_temp = json.versions[selectedVersion.value].incompatibilities?.[name as keyof object] as unknown as string[]
-                    if(incompatibilites_temp.indexOf(pack) === -1) return true
-
-                    knownIncompatibilities.value.push(pack)
-                    return false
-                })
-            }
+            updateKnownIncompatibilities()
         }
         else{
             let index = possibleIncompatibilities.value.indexOf(pack)
             possibleIncompatibilities.value.splice(index, 1)
-            index = knownIncompatibilities.value.indexOf(pack)
-            knownIncompatibilities.value.splice(index, 1)
-            updateIncompatibilities()
+            updateKnownIncompatibilities()
         }
     }
-    const updateIncompatibilities = () => {
+    const updateKnownIncompatibilities = () => {
         knownIncompatibilities.value = []
-        possibleIncompatibilities.value.every((curr: string, curr_index: number) => {
+        let poss_incom = possibleIncompatibilities.value
+        let incompatibilities_temp
+        poss_incom.every((curr: string, curr_index: number) => {
             if(curr_index === 0) return true
 
-            possibleIncompatibilities.value.every((prev: string, prev_index: number) => {
-            if(prev_index >= curr_index) return false
-            let incompatibilites_temp = json.versions[selectedVersion.value].incompatibilities?.[prev as keyof object] as unknown as string[]
-            if(incompatibilites_temp.indexOf(curr) === -1) return true
-            knownIncompatibilities.value.push(curr)
-            return false
+            poss_incom.every((prev: string, prev_index: number) => {
+                if(prev_index >= curr_index) return false
+
+                incompatibilities_temp = json.versions[selectedVersion.value].incompatibilities?.[prev as keyof object] as unknown as string[]
+                if(!incompatibilities_temp.includes(curr)) return true
+                knownIncompatibilities.value.push(curr)
+                return false
             })
 
+            return true
         })
     }
 
