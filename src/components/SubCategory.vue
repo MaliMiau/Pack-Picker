@@ -6,7 +6,7 @@
     defineProps({
         SubCategory:{
             type: Object,
-            default: JSON.parse('{"name": "Category", "packs": [{"name":"Pack", "description":"Description"}]}')
+            default: () => ({"name": "Category", "packs": [{"name":"Pack", "description":"Description"}]})
         },
         ParentName:{
             type: String,

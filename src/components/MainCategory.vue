@@ -7,7 +7,7 @@
     const props = defineProps({
         Category:{
             type: Object,
-            default: JSON.parse('{"name": "Category", "packs": ["Pack"]}')
+            default: () => ({"name": "Category", "packs": ["Pack"]})
         },
         Index:{
             type: Number,
