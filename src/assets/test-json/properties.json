@@ -79,6 +79,23 @@
                             "description": "Changes the cake's frosting to tasty coffee."
                         }
                     ]
+                },
+                {
+                    "name": "Glass",
+                    "packs": [
+                        {
+                            "name": "Clear Glass", 
+                            "description": "Removes highlights on glass texture."
+                        },
+                        {
+                            "name": "No Border Glass", 
+                            "description": "Removes the border on glass texture."
+                        },
+                        {
+                            "name": "Fancy Glass", 
+                            "description": "idk dude its fancy or smth."
+                        }
+                    ]
                 }
             ],
             "incompatibilities":{

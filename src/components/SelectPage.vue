@@ -58,19 +58,37 @@
                 knownIncompatibilities.value.push(curr)
                 return false
             })
-
             return true
         })
     }
 
     const sortedItems = (category: string, arrayItems: Array<string>) => {
-        console.log(arrayItems, category)
-        console.log(selected.value)
         selected.value[category as keyof object] = arrayItems as never
-        console.log(selected.value)
+        updatePossibleIncompatibilities()
     }
     const sortedCategories = (arrayCategories: Array<string>) => {
-        console.log(arrayCategories)
+        let new_selected: object = {}
+        arrayCategories.every((category: string) => {
+            new_selected[category as keyof object] = selected.value[category as keyof object] as never
+            return true
+        })
+        selected.value = new_selected
+        updatePossibleIncompatibilities()
+    }
+    const updatePossibleIncompatibilities = () => {
+        let categories = Object.keys(selected.value)
+        let selectedCategory
+        let incom_obj
+        possibleIncompatibilities.value = []
+        categories.forEach((category) => {
+            selectedCategory = selected.value[category as keyof object] as string[]
+            selectedCategory.forEach(pack => {
+                incom_obj = json.versions[selectedVersion.value].incompatibilities as object
+                if(incom_obj[pack as keyof object] === undefined) return
+                possibleIncompatibilities.value.push(pack)
+            });
+        })
+        updateKnownIncompatibilities()
     }
 </script>
 

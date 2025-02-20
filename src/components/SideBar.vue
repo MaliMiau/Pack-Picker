@@ -29,7 +29,6 @@
         else{
             e.target.parentNode.insertBefore(dragging, e.target.nextSibling);
         }
-        console.log(draggingLi, draggingUl)
     }
 
     function dragStart(e: DragEvent) {
