@@ -31,7 +31,7 @@
     @click="active = !active;$emit('updateSelected', Name, active)">
         <img>
         <section>{{ Name }}</section>
-        <div class="item-widget item-description">{{ Description }}</div>
+        <div class="item-widget item-description" v-html="Description"></div>
         <div class="item-widget item-incompatibilities">
             Incompatible with: 
             <i v-for="(name, index) in SelfIncompatibilities" :key="name as string">
@@ -91,6 +91,7 @@
     }
     .item-description {
         width: inherit;
+        font-weight: 300;
         transform: translateY(-110%);
         background-color: #000000;
     }

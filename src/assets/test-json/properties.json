@@ -8,15 +8,15 @@
                     "packs": [
                         {
                             "name": "MedKit Totem", 
-                            "description": "Changes the totem of undying into a MedKit."
+                            "description": "Changes the totem of undying into a <i>MedKit</i>."
                         },
                         {
                             "name": "One-Up Totem", 
-                            "description": "Changes the totem of undying into a One-Up."
+                            "description": "Changes the totem of undying into a <i>One-Up</i>."
                         },
                         {
                             "name": "Star Totem", 
-                            "description": "Changes the totem of undying into a Star. <i> Warning! </i>"
+                            "description": "Changes the totem of undying into a <i>Star</i>. <b> Warning! </b>"
                         }
                     ],
                     "subcategories": [
