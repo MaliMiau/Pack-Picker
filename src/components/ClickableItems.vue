@@ -13,30 +13,29 @@
             type: Array,
             required: true
         },
-        IncompatibilitiesList:{
+        SelfIncompatibilities:{
             type: Array,
             default: () => [""]
         }
     })
-    const active = ref("inactive")
-    const toggle = () => {
-        if (active.value === "inactive") active.value = "active"
-        else active.value = "inactive"
-    }
+    const active = ref(false)
 </script>
 
 <template>
     <div 
     class="item-container" 
-    :class="[active, Incompatibilities.includes(Name) ? 'incompatible' : 'compatible']" 
-    @click="toggle();$emit('updateSelected', Name, active)">
+    :class="[
+        active ? 'active': 'inactive', 
+        Incompatibilities.includes(Name) ? 'incompatible' : 'compatible'
+    ]" 
+    @click="active = !active;$emit('updateSelected', Name, active)">
         <img>
         <section>{{ Name }}</section>
-        <div class="item-description">{{ Description }}</div>
-        <div class="item-incompatibilities">
+        <div class="item-widget item-description">{{ Description }}</div>
+        <div class="item-widget item-incompatibilities">
             Incompatible with: 
-            <i v-for="(name, index) in IncompatibilitiesList" :key="name as string">
-                {{ name }}{{ index !== IncompatibilitiesList.length-1 ? ", " : "." }}
+            <i v-for="(name, index) in SelfIncompatibilities" :key="name as string">
+                {{ name }}{{ index < SelfIncompatibilities.length-1 ? ", " : "." }}
             </i>
         </div>
     </div>
@@ -57,12 +56,15 @@
             background: #444444bb;
             cursor: pointer;
         }
-    }
-    .item-container.active {
-        background-color: #888888bb;
-        &:hover{
-            background: #aaaaaabb;
-            cursor: pointer;
+        &.incompatible{
+            background: #cc0000bb !important;
+        }
+        &.active {
+            background-color: #888888bb;
+            &:hover{
+                background: #aaaaaabb;
+                cursor: pointer;
+            }
         }
     }
     img {
@@ -77,39 +79,27 @@
         text-align: center;
         margin: 10px 5px;
     }
-    .item-description {
+    .item-widget {
         color: white;
         position: absolute;
-        width: inherit;
         text-align: center;
         padding: 10px 10px;
         border-radius: 16px;
+        display: none;
+        filter: opacity(0);
+        transition: all 10s;
+    }
+    .item-description {
+        width: inherit;
         transform: translateY(-110%);
         background-color: #000000;
-        display: none;
-        filter: opacity(0);
-        transition: all 10s;
-    }
-    .item-container:hover .item-description:not(:hover) {
-        display: block;
-        filter: opacity(1);
-    }
-    .incompatible{
-        background: #cc0000bb !important;
     }
     .item-incompatibilities {
-        color: white;
-        position: absolute;
         width: fit-content;
-        text-align: center;
-        padding: 10px 10px;
-        border-radius: 16px;
         transform: translateY(168px);
         background-color: #cc0000;
-        display: none;
-        filter: opacity(0);
-        transition: all 10s;
     }
+    .item-container:hover .item-description:not(:hover),
     .item-container.incompatible:hover .item-incompatibilities:not(:hover) {
         display: block;
         filter: opacity(1);

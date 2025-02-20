@@ -45,7 +45,7 @@
                     :Name="pack.name" 
                     :Description="pack.description" 
                     :Incompatibilities="Incompatibilities"
-                    :IncompatibilitiesList="jsonIncompatibilities[pack.name]"
+                    :SelfIncompatibilities="jsonIncompatibilities[pack.name]"
                     @update-selected="(n, a) => $emit('updateSelected', n, a, Category.name)"
                 />
             </div>

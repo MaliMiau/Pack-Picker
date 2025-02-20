@@ -13,11 +13,11 @@
         if(selected_temp === undefined){
             selected_temp = []
         }
-        if(active === "active") {
+        if(active) {
             selected_temp.push(name)
             checkIncompatibilities(name, true)
         }
-        if(active === "inactive") {
+        else {
             let index = selected_temp.indexOf(name)
             selected_temp.splice(index, 1)
             checkIncompatibilities(name, false)
