@@ -1,101 +1,45 @@
 {
+    "packs":{
+        "MedKit Totem": "Changes the totem of undying into a <i>MedKit</i>.",
+        "One-Up Totem": "Changes the totem of undying into a <i>One-Up</i>.",
+        "Star Totem": "Changes the totem of undying into a <i>Star</i>.",
+        "Iron Totem": "Changes the totem of undying material to Iron.",
+        "Redstone Totem": "Changes the totem of undying material to Redstone.",
+        "Gold Totem": "Changes the totem of undying material to Gold.",
+        "Diamond Totem": "Changes the totem of undying material to Diamond.",
+        "Netherite Totem": "Changes the totem of undying material to Netherite.",
+        "Copper Totem": "Changes the totem of undying material to Copper.",
+        "Strawberry Cake": "Changes the cake's frosting to tasty strawberry.",
+        "Chocolate Cake": "Changes the cake's frosting to tasty Chocolate.",
+        "Apple Cake": "Changes the cake's frosting to tasty Apple.",
+        "Carrot Cake": "Changes the cake's frosting to tasty Carrot.",
+        "Oreo Cake": "Changes the cake's frosting to tasty Oreo.",
+        "Coffee Cake": "Changes the cake's frosting to tasty Coffee.",
+        "Clear Glass": "Removes highlights on glass texture.",
+        "No Border Glass": "Removes the border on glass texture.",
+        "Fancy Glass": "idk dude its fancy or smth."
+    },
     "versions": [
         {
             "id": "1.21",
             "categories": [
                 {
                     "name": "Totems",
-                    "packs": [
-                        {
-                            "name": "MedKit Totem", 
-                            "description": "Changes the totem of undying into a <i>MedKit</i>."
-                        },
-                        {
-                            "name": "One-Up Totem", 
-                            "description": "Changes the totem of undying into a <i>One-Up</i>."
-                        },
-                        {
-                            "name": "Star Totem", 
-                            "description": "Changes the totem of undying into a <i>Star</i>. <b> Warning! </b>"
-                        }
-                    ],
+                    "packs": ["MedKit Totem", "One-Up Totem", "Star Totem"],
                     "subcategories": [
                         {
                             "name": "Material Totems",
-                            "packs": [
-                                {
-                                    "name": "Iron Totem", 
-                                    "description": "Changes the totem of undying material to Iron."
-                                },
-                                {
-                                    "name": "Redstone Totem", 
-                                    "description": "Changes the totem of undying material to Redstone."
-                                },
-                                {
-                                    "name": "Gold Totem", 
-                                    "description": "Changes the totem of undying material to Gold."
-                                },
-                                {
-                                    "name": "Diamond Totem", 
-                                    "description": "Changes the totem of undying material to Diamond."
-                                },
-                                {
-                                    "name": "Netherite Totem", 
-                                    "description": "Changes the totem of undying material to Netherite."
-                                },
-                                {
-                                    "name": "Copper Totem", 
-                                    "description": "Changes the totem of undying material to Copper."
-                                }
-                            ]
+                            "packs": ["Iron Totem", "Redstone Totem", "Gold Totem", "Diamond Totem", "Netherite Totem", "Copper Totem"]
                         }
                     ]
                 },
                 {
                     "name": "Cakes",
-                    "packs": [
-                        {
-                            "name": "Strawberry Cake", 
-                            "description": "Changes the cake's frosting to tasty strawberry."
-                        },
-                        {
-                            "name": "Chocolate Cake", 
-                            "description": "Changes the cake's frosting to tasty chocolate."
-                        },
-                        {
-                            "name": "Apple Cake", 
-                            "description": "Changes the cake's frosting to tasty apple."
-                        },
-                        {
-                            "name": "Carrot Cake", 
-                            "description": "Changes the cake's frosting to tasty carrot."
-                        },
-                        {
-                            "name": "Oreo Cake", 
-                            "description": "Changes the cake's frosting to tasty oreo."
-                        },
-                        {
-                            "name": "Coffee Cake", 
-                            "description": "Changes the cake's frosting to tasty coffee."
-                        }
-                    ]
+                    "packs": ["Strawberry Cake", "Chocolate Cake", "Apple Cake", "Carrot Cake", "Oreo Cake", "Coffee Cake"]
                 },
                 {
                     "name": "Glass",
-                    "packs": [
-                        {
-                            "name": "Clear Glass", 
-                            "description": "Removes highlights on glass texture."
-                        },
-                        {
-                            "name": "No Border Glass", 
-                            "description": "Removes the border on glass texture."
-                        },
-                        {
-                            "name": "Fancy Glass", 
-                            "description": "idk dude its fancy or smth."
-                        }
-                    ]
+                    "packs": ["Clear Glass", "No Border Glass", "Fancy Glass"]
                 }
             ],
             "incompatibilities":{
@@ -109,20 +53,7 @@
             "categories": [
                 {
                     "name": "Totems",
-                    "packs": [
-                        {
-                            "name": "MedKit Totem", 
-                            "description": "Changes the totem of undying into a MedKit."
-                        },
-                        {
-                            "name": "One-Up Totem", 
-                            "description": "Changes the totem of undying into a One-Up."
-                        },
-                        {
-                            "name": "Star Totem", 
-                            "description": "Changes the totem of undying into a Star."
-                        }
-                    ]
+                    "packs": ["MedKit Totem", "One-Up Totem", "Star Totem"]
                 }
             ]
         }

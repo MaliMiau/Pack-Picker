@@ -38,10 +38,9 @@
                 <ClickableItems 
                     v-for="pack in Category.packs" 
                     :key="pack" 
-                    :Name="pack.name" 
-                    :Description="pack.description" 
+                    :Name="pack" 
                     :Incompatibilities="Incompatibilities"
-                    :SelfIncompatibilities="jsonIncompatibilities[pack.name]"
+                    :SelfIncompatibilities="jsonIncompatibilities[pack]"
                     @update-selected="(n, a) => $emit('updateSelected', n, a, Category.name)"
                 />
             </div>

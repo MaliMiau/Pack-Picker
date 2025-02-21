@@ -1,13 +1,10 @@
 <script setup lang="ts">
     import { ref } from 'vue';
-    defineProps({
+    import json from '../assets/data/data.json'
+    const props = defineProps({
         Name:{
             type: String,
             default: "Pack"
-        },
-        Description:{
-            type: String,
-            default: "Description"
         },
         Incompatibilities:{
             type: Array,
@@ -19,6 +16,8 @@
         }
     })
     const active = ref(false)
+    const description = ref("")
+    description.value = json.packs[props.Name as keyof object]
 </script>
 
 <template>
@@ -31,7 +30,7 @@
     @click="active = !active;$emit('updateSelected', Name, active)">
         <img>
         <section>{{ Name }}</section>
-        <div class="item-widget item-description" v-html="Description"></div>
+        <div class="item-widget item-description" v-html="description"></div>
         <div class="item-widget item-incompatibilities">
             Incompatible with: 
             <i v-for="(name, index) in SelfIncompatibilities" :key="name as string">
