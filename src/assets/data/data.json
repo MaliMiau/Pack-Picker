@@ -47,15 +47,6 @@
                 "One-Up Totem": ["MedKit Totem"],
                 "Star Totem":   ["MedKit Totem"]
             }
-        },
-        {
-            "id": "1.20",
-            "categories": [
-                {
-                    "name": "Totems",
-                    "packs": ["MedKit Totem", "One-Up Totem", "Star Totem"]
-                }
-            ]
         }
     ]
 }

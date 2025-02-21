@@ -19,23 +19,24 @@
     var draggingLi = false
     var draggingUl = false
 
-    function dragOver(e: Event) {
+    function dragOver(e: DragEvent) {
+        e.preventDefault()
         if (!(e.target instanceof HTMLElement)) return
         if (!(e.target.parentNode instanceof HTMLElement)) return
         if (e.target.parentNode !== dragging.parentNode) return
         if (isBefore(dragging, e.target)){
-            e.target.parentNode.insertBefore(dragging, e.target);
+            e.target.parentNode.insertBefore(dragging, e.target)
         }
         else{
-            e.target.parentNode.insertBefore(dragging, e.target.nextSibling);
+            e.target.parentNode.insertBefore(dragging, e.target.nextSibling)
         }
     }
 
     function dragStart(e: DragEvent) {
         if (!(e.dataTransfer instanceof DataTransfer)) return
-        e.dataTransfer.effectAllowed = "move";
-        e.dataTransfer.setData("text/plain", ""); // Thanks to bqlou for their comment.
-        dragging = e.target as HTMLElement;
+        e.dataTransfer.effectAllowed = "move"
+        e.dataTransfer.setData("text/plain", "")
+        dragging = e.target as HTMLElement
     }
 
     function isBefore(el1: HTMLElement, el2: HTMLElement) {
@@ -43,25 +44,6 @@
         if (cur === el2)
             return true;
         return false;
-    }
-
-    function canDragLi(e: DragEvent){
-        if(draggingUl) return
-        draggingLi = true
-        dragStart(e)
-    }
-    function canDragUl(e: DragEvent){
-        if(draggingLi) return
-        draggingUl = true
-        dragStart(e)
-    }
-    function dragOverLi(e: DragEvent){
-        if(draggingUl) return
-        dragOver(e)
-    }
-    function dragOverUl(e: DragEvent){
-        if(draggingLi) return
-        dragOver(e)
     }
     function stopDragLi(e: DragEvent){
         if(!draggingLi) return
@@ -87,16 +69,16 @@
         <div class="list">
             <ul 
             :draggable="true"
-            :ondragover="dragOverUl"
-            :ondragstart="canDragUl"
+            :ondragover="(e: DragEvent) => {if(!draggingLi) dragOver(e)}"
+            :ondragstart="(e: DragEvent) => {if(!draggingLi) {draggingUl = true; dragStart(e)}}"
             :ondragend="stopDragUl"
             v-for="category in Categories" 
             :key="category as string">
                 {{ category }}
                 <li 
                 :draggable="true"
-                :ondragover="dragOverLi"
-                :ondragstart="canDragLi"
+                :ondragover="(e: DragEvent) => {if(!draggingUl) dragOver(e)}"
+                :ondragstart="(e: DragEvent) => {if(!draggingUl) {draggingLi = true; dragStart(e)}}"
                 :ondragend="stopDragLi"
                 v-for="pack in Selected[category as keyof object]" 
                 :key="pack as string"
